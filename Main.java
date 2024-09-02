@@ -18,13 +18,16 @@ public class Main {
         }
         List<Double> prices = new ArrayList<>();
         Double totalPrice = 0.0;
+        int numberOfFlightsFromVladivostokToTelAviv = 0;
         for (Ticket ticket : ticketList) {
             if (ticket.getOrigin_name().equals("Владивосток") && ticket.getDestination_name().equals("Тель-Авив")) {
                 prices.add(ticket.getPrice());
                 totalPrice += ticket.getPrice();
+                numberOfFlightsFromVladivostokToTelAviv++;
             }
         }
-        Double averagePrice = totalPrice / ticketList.size();
+        Double averagePrice = totalPrice / numberOfFlightsFromVladivostokToTelAviv;
+        System.out.println(averagePrice);
         Collections.sort(prices);
         Double medianPrice = 0.0;
         if (prices.size()%2 == 1) {
